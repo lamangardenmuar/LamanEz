@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>LamanEz</title>
+<meta name="theme-color" content="#2F5D3A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LamanEz">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root { --bg:#EEF3EA; --daun:#2F5D3A; --teks:#1C2620; --kelabu:#5F6C63; }
+  html, body { margin:0; height:100%; background:var(--bg); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--teks); }
+  body { display:flex; flex-direction:column; overflow:hidden; }
+  #app { flex:1; width:100%; border:0; display:block; background:var(--bg); }
+
+  #percik { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:var(--bg); z-index:5; transition:opacity .35s; }
+  #percik img { width:150px; height:auto; }
+  #percik.hilang { opacity:0; pointer-events:none; }
+  .titik { display:flex; gap:7px; }
+  .titik span { width:8px; height:8px; border-radius:50%; background:var(--daun); animation:lompat 1s infinite ease-in-out; }
+  .titik span:nth-child(2) { animation-delay:.15s } .titik span:nth-child(3) { animation-delay:.3s }
+  @keyframes lompat { 0%,80%,100% { opacity:.25; transform:scale(.8) } 40% { opacity:1; transform:scale(1) } }
+  #lambat { display:none; text-align:center; font-size:14px; color:var(--kelabu); padding:0 24px; }
+  #lambat a { color:var(--daun); font-weight:700; }
+
+  #pasang { display:none; align-items:center; gap:12px; padding:10px 14px; padding-top:calc(10px + env(safe-area-inset-top)); background:var(--daun); color:#fff; font-size:14px; }
+  #pasang img { width:34px; height:34px; border-radius:9px; background:#fff; }
+  #pasang .teks { flex:1; line-height:1.3; }
+  #pasang .teks b { display:block; }
+  #pasang button { border:0; border-radius:10px; padding:9px 14px; font:inherit; font-weight:700; cursor:pointer; }
+  #btnPasang { background:#fff; color:var(--daun); }
+  #btnTutup { background:transparent; color:#fff; padding:9px 6px; font-size:18px; }
+</style>
+</head>
+<body>
+  <!-- Bar jemputan install (hanya keluar bila belum install) -->
+  <div id="pasang">
+    <img src="icon-192.png" alt="">
+    <div class="teks"><b>Pasang app LamanEz</b><span id="pasangTeks">Letak ikon di skrin utama</span></div>
+    <button id="btnPasang" type="button">Pasang</button>
+    <button id="btnTutup" type="button" aria-label="Tutup">✕</button>
+  </div>
+
+  <div id="percik">
+    <img src="logo.png" alt="Laman Garden">
+    <div class="titik"><span></span><span></span><span></span></div>
+    <div id="lambat">Lambat sikit hari ni…<br><a id="bukaTerus" href="#">Buka terus</a></div>
+  </div>
+
+  <iframe id="app" title="Laman Garden Booking" allow="clipboard-write; web-share; camera"></iframe>
+
+<script>
+  // ====== TUKAR LINK INI JIKA DEPLOYMENT /exec BERUBAH ======
+  const APP_URL = 'https://script.google.com/macros/s/AKfycbwYCvm7VBoP-N4tyLbrK8W8zpCNYSE9OtYWiyOS4yvFfDBrPxwOIs2h2pYZknx_CvYQ/exec';
+  // ===========================================================
+
+  const frame = document.getElementById('app');
+  const percik = document.getElementById('percik');
+  document.getElementById('bukaTerus').href = APP_URL;
+  frame.src = APP_URL;
+  frame.addEventListener('load', () => setTimeout(() => percik.classList.add('hilang'), 400));
+  setTimeout(() => { document.getElementById('lambat').style.display = 'block'; }, 12000);
+
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+  // ---- Jemputan install ----
+  const sudahPasang = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  const iOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const bar = document.getElementById('pasang');
+  const btn = document.getElementById('btnPasang');
+  let tutup = false;
+  try { tutup = localStorage.getItem('lg_tutup_pasang') === '1'; } catch (e) {}
+  let promptPasang = null;
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    promptPasang = e;
+    if (!sudahPasang && !tutup) bar.style.display = 'flex';
+  });
+  btn.addEventListener('click', async () => {
+    if (promptPasang) {
+      promptPasang.prompt();
+      await promptPasang.userChoice;
+      promptPasang = null;
+      bar.style.display = 'none';
+    } else if (iOS) {
+      alert('Di iPhone:\n1. Tekan butang Share (petak dengan anak panah ke atas) di bawah\n2. Pilih "Add to Home Screen"\n3. Tekan "Add"');
+    }
+  });
+  document.getElementById('btnTutup').addEventListener('click', () => {
+    bar.style.display = 'none';
+    try { localStorage.setItem('lg_tutup_pasang', '1'); } catch (e) {}
+  });
+  if (iOS && !sudahPasang && !tutup) {
+    document.getElementById('pasangTeks').textContent = 'Share → Add to Home Screen';
+    btn.textContent = 'Cara';
+    bar.style.display = 'flex';
+  }
+  window.addEventListener('appinstalled', () => { bar.style.display = 'none'; });
+</script>
+</body>
+</html>
