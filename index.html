@@ -49,10 +49,11 @@
   <div id="percik">
     <img src="logo.png" alt="Laman Garden">
     <div class="titik"><span></span><span></span><span></span></div>
-    <div id="lambat">Lambat sikit hari ni…<br><a id="bukaTerus" href="#">Buka terus</a></div>
+    <div id="lambat">Lambat sikit hari ni…</div>
+    <div id="gagal" style="display:none;text-align:center;font-size:14px;color:var(--kelabu);padding:0 28px;line-height:1.5"><b style="color:var(--teks)">Tak dapat buka app</b><br><span id="gagalTeks">Semak internet dan cuba lagi.</span><br><button id="btnCuba" type="button" style="margin-top:14px;border:0;border-radius:12px;padding:11px 22px;background:var(--daun);color:#fff;font:inherit;font-weight:700">Cuba lagi</button></div>
   </div>
 
-  <iframe id="app" title="Laman Garden Booking" allow="clipboard-write; web-share; camera"></iframe>
+  <iframe id="app" title="Laman Garden Booking" allow="clipboard-read; clipboard-write; web-share; camera"></iframe>
 
 <script>
   // ====== TUKAR LINK INI JIKA DEPLOYMENT /exec BERUBAH ======
@@ -61,10 +62,36 @@
 
   const frame = document.getElementById('app');
   const percik = document.getElementById('percik');
-  document.getElementById('bukaTerus').href = APP_URL;
-  frame.src = APP_URL;
-  frame.addEventListener('load', () => setTimeout(() => percik.classList.add('hilang'), 400));
-  setTimeout(() => { document.getElementById('lambat').style.display = 'block'; }, 12000);
+
+  // Ambil paparan app terus dari Apps Script TANPA cookie Google,
+  // supaya tak keluar "Sorry, unable to open the file" bila telefon ada banyak akaun Google.
+  async function bukaApp() {
+    document.getElementById('gagal').style.display = 'none';
+    document.querySelector('.titik').style.display = 'flex';
+    const lambat = setTimeout(() => { document.getElementById('lambat').style.display = 'block'; }, 10000);
+    try {
+      const r = await fetch(APP_URL + '?ui=1&t=' + Date.now(), { credentials: 'omit', cache: 'no-store' });
+      const html = await r.text();
+      if (!r.ok || html.indexOf('lg_pin') < 0) throw new Error('Link app tidak sah. Mungkin deployment Apps Script telah berubah.');
+      try { localStorage.setItem('lg_ui', html); } catch (e) {}
+      pasang(html);
+    } catch (e) {
+      let simpan = null;
+      try { simpan = localStorage.getItem('lg_ui'); } catch (x) {}
+      if (simpan && !/deployment/.test(e.message)) { pasang(simpan); return; }
+      document.querySelector('.titik').style.display = 'none';
+      document.getElementById('lambat').style.display = 'none';
+      document.getElementById('gagalTeks').textContent = /deployment/.test(e.message) ? e.message : 'Semak internet dan cuba lagi.';
+      document.getElementById('gagal').style.display = 'block';
+    } finally { clearTimeout(lambat); }
+  }
+  function pasang(html) {
+    const suntik = '<script>window.API_URL = ' + JSON.stringify(APP_URL) + ';<\/script>';
+    frame.srcdoc = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + suntik) : suntik + html;
+  }
+  frame.addEventListener('load', () => { if (frame.srcdoc) setTimeout(() => percik.classList.add('hilang'), 300); });
+  document.getElementById('btnCuba').addEventListener('click', bukaApp);
+  bukaApp();
 
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 

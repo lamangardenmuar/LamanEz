@@ -1,6 +1,6 @@
 // Service worker ringkas: cukup untuk app boleh di-install.
 // Data sentiasa diambil terus dari Google (tiada cache data).
-const VERSI = 'lg-v1';
+const VERSI = 'lg-v2';
 const FAIL = ['./', './index.html', './logo.png', './icon-192.png'];
 
 self.addEventListener('install', e => {
