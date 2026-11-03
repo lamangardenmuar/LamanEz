@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Book Laman Garden</title>
-<meta name="description" content="Check available dates and book the Dewan or Homestay at Laman Garden Parit Jawa, Muar.">
+<title>Laman Garden Booking</title>
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#2F5D3A">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,44 +14,56 @@
   :root {
     --bg: #EEF3EA; --kad: #FFFFFF; --teks: #1C2620; --kelabu: #5F6C63; --pudar: #8C978F; --garis: #DCE3D8; --trek: #E8EDE5;
     --daun: #2F5D3A; --daun-pucat: #E4EEDD; --hijau-muda: #F3F8EF; --dewan: #4E9A34; --homestay: #2F8BD3;
-    --merah: #B0412F; --merah-pucat: #FBEDEA; --kuning-pucat: #FBF3DF; --kuning: #7A5A0E; --wa: #1FA855;
+    --merah: #B0412F; --merah-pucat: #FBEDEA; --kuning-pucat: #FBF3DF; --kuning: #7A5A0E; --biru-pucat: #E3F0FB; --wa: #1FA855;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--teks); font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
   button, input, textarea { font: inherit; color: inherit; }
   button { cursor: pointer; background: none; border: 0; }
+  a { color: var(--daun); }
   :focus-visible { outline: 2px solid var(--daun); outline-offset: 2px; }
   .tersorok { display: none !important; }
-  .ms { color: var(--pudar); font-weight: 500; font-style: italic; }
-  .wrap { position: relative; max-width: 520px; margin: 0 auto; padding: 0 16px calc(120px + env(safe-area-inset-bottom)); overflow-x: clip; }
+  .wrap { position: relative; max-width: 520px; margin: 0 auto; padding: 0 16px calc(110px + env(safe-area-inset-bottom)); overflow-x: clip; }
   .bulatan { position: absolute; top: -90px; right: -80px; width: 240px; height: 240px; border-radius: 50%; background: #CFE6F6; pointer-events: none; }
-  header { position: relative; display: flex; align-items: center; gap: 12px; padding: 18px 0 8px; }
-  header img { height: 64px; width: auto; mix-blend-mode: multiply; }
-  header h1 { font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
-  header p { font-size: 13px; color: var(--kelabu); }
-  .hero { position: relative; margin-top: 8px; padding: 18px; border-radius: 24px; background: var(--daun); color: #fff; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; right: -40px; top: -50px; width: 160px; height: 160px; border-radius: 50%; background: #3F7FB0; opacity: .55; }
-  .hero > * { position: relative; }
-  .hero h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
-  .hero p { font-size: 13.5px; opacity: .9; margin-top: 4px; }
-  .langkah { display: flex; gap: 6px; margin-top: 14px; }
-  .langkah span { flex: 1; height: 5px; border-radius: 5px; background: rgba(255,255,255,.25); }
-  .langkah span.on { background: #fff; }
+  header { position: relative; display: flex; align-items: center; gap: 12px; padding: 16px 0 6px; }
+  header img { height: 56px; width: auto; mix-blend-mode: multiply; }
+  header .nama { flex: 1; min-width: 0; }
+  header h1 { font-size: 18px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  header p { font-size: 12.5px; color: var(--kelabu); }
+  .bahasa { flex-shrink: 0; display: flex; background: var(--kad); border-radius: 999px; padding: 3px; box-shadow: 0 6px 16px -10px rgba(28,38,32,.4); }
+  .bahasa button { padding: 6px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 800; color: var(--kelabu); }
+  .bahasa button[aria-pressed="true"] { background: var(--daun); color: #fff; }
 
-  .seksyen { margin-top: 18px; }
-  .seksyen > h3 { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 800; margin: 0 2px 10px; }
-  .seksyen > h3 .no { width: 26px; height: 26px; border-radius: 50%; background: var(--daun); color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .seksyen > h3 .ms { font-size: 13px; }
-  .kad { background: var(--kad); border-radius: 22px; padding: 16px; box-shadow: 0 10px 30px -18px rgba(28,38,32,.38); }
+  .langkah-atas { margin-top: 10px; }
+  .langkah-atas small { font-size: 12.5px; font-weight: 700; color: var(--kelabu); }
+  .bar-langkah { display: flex; gap: 6px; margin-top: 6px; }
+  .bar-langkah span { flex: 1; height: 5px; border-radius: 5px; background: var(--garis); }
+  .bar-langkah span.on { background: var(--daun); }
+  h2.tajuk { font-size: 24px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; margin-top: 14px; }
+  p.sub { font-size: 14px; color: var(--kelabu); margin-top: 4px; }
+  .kad { background: var(--kad); border-radius: 22px; padding: 16px; box-shadow: 0 10px 30px -18px rgba(28,38,32,.38); margin-top: 14px; }
+  .kad h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
 
-  .jenis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .jenis label { position: relative; display: block; padding: 14px; border-radius: 20px; background: var(--kad); border: 2px solid var(--trek); cursor: pointer; box-shadow: 0 10px 30px -20px rgba(28,38,32,.4); }
-  .jenis label:has(input:checked) { border-color: var(--daun); background: var(--hijau-muda); }
-  .jenis input { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; accent-color: var(--daun); }
-  .jenis .ikon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; }
-  .jenis b { display: block; font-size: 17px; margin-top: 10px; }
-  .jenis small { display: block; font-size: 12.5px; color: var(--kelabu); }
-  .jenis .harga { display: block; margin-top: 8px; font-size: 18px; font-weight: 800; color: var(--daun); }
+  h3.sek { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 800; margin: 22px 2px 10px; }
+  h3.sek .no { width: 26px; height: 26px; border-radius: 50%; background: var(--daun); color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .jenis-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .jenis-2 button { display: block; text-align: left; padding: 14px; border-radius: 20px; background: var(--kad); border: 2px solid var(--trek); box-shadow: 0 10px 30px -20px rgba(28,38,32,.4); }
+  .jenis-2 button[aria-pressed="true"] { border-color: var(--daun); background: var(--hijau-muda); box-shadow: 0 0 0 3px var(--daun-pucat); }
+  .jenis-2 .ikon { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; color: #fff; }
+  .jenis-2 b { display: block; font-size: 17px; margin-top: 10px; }
+  .jenis-2 small { display: block; font-size: 12.5px; color: var(--kelabu); line-height: 1.35; }
+  .jenis-2 .harga { display: block; margin-top: 8px; font-size: 16px; font-weight: 800; color: var(--daun); }
+  .jenis-2 .harga i { font-style: normal; font-size: 12px; font-weight: 600; color: var(--kelabu); }
+  .dua { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .dua .medan, .dua .medan:first-child { margin-top: 14px; }
+  .jenis { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .jenis button { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 16px; border-radius: 22px; background: var(--kad); border: 2px solid var(--trek); box-shadow: 0 10px 30px -20px rgba(28,38,32,.4); }
+  .jenis button[aria-pressed="true"] { border-color: var(--daun); background: var(--hijau-muda); }
+  .jenis .ikon { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; }
+  .jenis .isi { flex: 1; min-width: 0; }
+  .jenis b { display: block; font-size: 18px; }
+  .jenis small { display: block; font-size: 13px; color: var(--kelabu); }
+  .jenis .harga { display: block; margin-top: 4px; font-size: 16px; font-weight: 800; color: var(--daun); }
   .jenis .harga i { font-style: normal; font-size: 12.5px; font-weight: 600; color: var(--kelabu); }
 
   .nav-bulan { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
@@ -60,7 +72,7 @@
   .btn-nav:disabled { opacity: .35; }
   .minggu, .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
   .minggu div { text-align: center; font-size: 11px; font-weight: 700; color: var(--pudar); padding-bottom: 6px; }
-  .hari { height: 44px; border-radius: 12px; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .hari { height: 46px; border-radius: 12px; font-weight: 700; font-size: 14.5px; display: flex; align-items: center; justify-content: center; position: relative; }
   .hari:not(:disabled):hover { background: var(--hijau-muda); }
   .hari.sibuk { color: #B9C2BC; text-decoration: line-through; background: repeating-linear-gradient(135deg, #F3F4F2 0 4px, #FAFAF9 4px 8px); cursor: not-allowed; }
   .hari.lepas { color: #C9D0CB; cursor: not-allowed; }
@@ -73,55 +85,89 @@
   .petunjuk { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--kelabu); margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--trek); }
   .petunjuk span { display: flex; align-items: center; gap: 6px; }
   .petunjuk i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
-  .arahan { font-size: 13.5px; padding: 10px 12px; border-radius: 12px; background: var(--bg); color: var(--kelabu); margin-top: 12px; }
+  .arahan { font-size: 14px; padding: 12px 14px; border-radius: 14px; background: var(--kad); color: var(--kelabu); margin-top: 12px; box-shadow: 0 10px 30px -22px rgba(28,38,32,.4); }
   .arahan.ok { background: var(--daun-pucat); color: var(--daun); }
-  .arahan.salah { background: var(--merah-pucat); color: var(--merah); }
 
   .rb { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 14px; }
   .rb + .rb { border-top: 1px dashed var(--trek); }
   .rb span { color: var(--kelabu); }
   .rb small { display: block; font-size: 12px; color: var(--pudar); }
-  .rb b { text-align: right; white-space: nowrap; }
+  .rb b { text-align: right; }
+  .rb.besar b { font-size: 18px; }
   .jumlah { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; padding-top: 10px; border-top: 2px solid var(--daun); }
   .jumlah span { font-weight: 800; }
   .jumlah b { font-size: 22px; font-weight: 800; color: var(--daun); }
 
-  .medan { margin-top: 12px; }
+  .medan { margin-top: 14px; }
   .medan:first-child { margin-top: 0; }
-  .medan label { display: block; font-size: 13px; font-weight: 700; color: var(--kelabu); margin-bottom: 6px; }
-  .medan input, .medan textarea { display: block; width: 100%; border: 1.5px solid var(--garis); border-radius: 12px; padding: 12px; font-size: 16px; background: var(--kad); }
-  .medan textarea { resize: vertical; min-height: 72px; }
+  .medan label { display: block; font-size: 13.5px; font-weight: 700; color: var(--kelabu); margin-bottom: 6px; }
+  .medan input, .medan textarea { display: block; width: 100%; border: 1.5px solid var(--garis); border-radius: 14px; padding: 13px; font-size: 16px; background: var(--kad); }
+  .medan textarea { resize: vertical; min-height: 84px; }
   .medan input:focus, .medan textarea:focus { outline: none; border-color: var(--daun); box-shadow: 0 0 0 3px var(--daun-pucat); }
-  .dua { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .muat-naik { width: 100%; display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; border: 2px dashed #A9D3F0; background: #F2F8FD; text-align: left; cursor: pointer; }
-  .muat-naik .ikon { width: 46px; height: 46px; border-radius: 14px; background: var(--homestay); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .muat-naik b { display: block; font-size: 14.5px; }
-  .muat-naik small { display: block; font-size: 12.5px; color: var(--kelabu); }
-  .bank { margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--kuning-pucat); color: var(--kuning); font-size: 13.5px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .seterus { margin-top: 6px; display: flex; flex-direction: column; gap: 10px; }
+  .seterus div { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+  .seterus .no { width: 26px; height: 26px; border-radius: 50%; background: var(--daun-pucat); color: var(--daun); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .nota { font-size: 12.5px; color: var(--kelabu); line-height: 1.55; margin-top: 12px; }
   .nota b { color: var(--teks); }
-  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   .kaki { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--kad); border-top: 1px solid var(--trek); padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); }
-  .kaki-dalam { max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .kaki-dalam { max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
   .kaki .ringkas { flex: 1; min-width: 0; font-size: 12.5px; color: var(--kelabu); line-height: 1.35; }
   .kaki .ringkas b { display: block; font-size: 17px; color: var(--teks); }
   .btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 20px; border-radius: 16px; font-weight: 800; font-size: 15.5px; text-decoration: none; transition: transform .1s, opacity .15s; }
   .btn:active { transform: scale(.98); }
   .btn:disabled { opacity: .45; pointer-events: none; }
   .btn-utama { background: var(--daun); color: #fff; }
+  .btn-balik { width: 50px; height: 50px; border-radius: 16px; background: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .btn-wa { background: var(--wa); color: #fff; width: 100%; }
   .btn-garis { background: var(--kad); border: 1.5px solid var(--garis); width: 100%; }
+  .btn-kecil { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 10px; background: var(--daun-pucat); color: var(--daun); font-size: 13px; font-weight: 800; }
   .ralat { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--merah-pucat); color: var(--merah); font-size: 14px; font-weight: 600; }
   .pusing { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; animation: pusing .8s linear infinite; }
   .pusing.besar { width: 32px; height: 32px; border-color: var(--trek); border-top-color: var(--daun); margin: 0 auto 12px; }
+  .pusing.gelap { border-color: var(--trek); border-top-color: var(--daun); }
   @keyframes pusing { to { transform: rotate(360deg); } }
-  .tengah { text-align: center; padding: 60px 20px; color: var(--kelabu); }
-  .berjaya { text-align: center; padding: 28px 8px 8px; }
-  .berjaya .tanda { width: 84px; height: 84px; border-radius: 28px; background: var(--daun); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 16px 30px -12px rgba(47,93,58,.7); }
-  .berjaya h2 { font-size: 24px; font-weight: 800; margin-top: 16px; letter-spacing: -.02em; }
-  .berjaya p { color: var(--kelabu); margin-top: 6px; font-size: 14.5px; }
-  .no-rujukan { display: inline-block; margin-top: 14px; padding: 8px 16px; border-radius: 999px; background: var(--kad); font-weight: 800; letter-spacing: .04em; }
+  .tengah { text-align: center; padding: 60px 12px; color: var(--kelabu); }
+  .tengah h2 { color: var(--teks); font-size: 21px; margin-bottom: 6px; }
+
+  /* status page */
+  .hero { position: relative; margin-top: 12px; padding: 18px; border-radius: 24px; color: #fff; overflow: hidden; background: var(--daun); }
+  .hero::before { content: ''; position: absolute; right: -40px; top: -50px; width: 160px; height: 160px; border-radius: 50%; background: #3F7FB0; opacity: .5; }
+  .hero > * { position: relative; }
+  .hero.kuning { background: #8A6512; }
+  .hero.biru { background: #2B6E9E; }
+  .hero.merah { background: #8E3A2B; }
+  .hero.kelabu { background: #56615A; }
+  .hero small { font-size: 12.5px; opacity: .85; font-weight: 700; }
+  .hero h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1.25; margin-top: 4px; }
+  .hero p { font-size: 14px; opacity: .92; margin-top: 6px; }
+  .garis-masa { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+  .garis-masa div { display: flex; gap: 12px; align-items: flex-start; position: relative; padding-bottom: 14px; font-size: 14px; }
+  .garis-masa div:last-child { padding-bottom: 0; }
+  .garis-masa div:not(:last-child)::before { content: ''; position: absolute; left: 11px; top: 24px; bottom: 0; width: 2px; background: var(--trek); }
+  .garis-masa div.siap:not(:last-child)::before { background: var(--daun); }
+  .garis-masa i { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--garis); background: var(--kad); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-style: normal; }
+  .garis-masa .siap i { background: var(--daun); border-color: var(--daun); }
+  .garis-masa .kini i { border-color: var(--daun); box-shadow: 0 0 0 4px var(--daun-pucat); }
+  .garis-masa b { display: block; }
+  .garis-masa small { display: block; font-size: 12.5px; color: var(--kelabu); }
+  .garis-masa .belum b { color: var(--pudar); font-weight: 600; }
+  .bayar-kotak { margin-top: 12px; padding: 14px; border-radius: 16px; background: var(--kuning-pucat); }
+  .bayar-kotak .amaun { font-size: 26px; font-weight: 800; color: var(--kuning); letter-spacing: -.02em; }
+  .bank { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: #fff; font-size: 14px; font-weight: 700; }
+  .muat-naik { width: 100%; display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; border: 2px dashed #A9D3F0; background: #F2F8FD; text-align: left; cursor: pointer; margin-top: 12px; }
+  .muat-naik .ikon { width: 46px; height: 46px; border-radius: 14px; background: var(--homestay); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .muat-naik b { display: block; font-size: 14.5px; }
+  .muat-naik small { display: block; font-size: 12.5px; color: var(--kelabu); }
+  .lencana { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--daun-pucat); color: var(--daun); font-size: 14px; }
+  .dok { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 0; }
+  .dok + .dok { border-top: 1px solid var(--trek); }
+  .dok .pdf { width: 36px; height: 44px; border-radius: 8px; background: var(--daun-pucat); color: var(--daun); font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dok .isi { flex: 1; min-width: 0; }
+  .dok b { display: block; font-size: 14.5px; }
+  .dok small { display: block; font-size: 12.5px; color: var(--kelabu); }
+  .toast { position: fixed; left: 50%; bottom: 100px; transform: translateX(-50%); z-index: 40; background: var(--teks); color: #fff; font-size: 14px; font-weight: 600; padding: 11px 16px; border-radius: 14px; display: none; max-width: calc(100% - 32px); text-align: center; }
   @media (prefers-reduced-motion: reduce) { .pusing { animation-duration: 2s; } }
 </style>
 </head>
@@ -130,283 +176,426 @@
   <div class="bulatan" aria-hidden="true"></div>
   <header>
     <img src="logo.png" alt="Laman Garden">
-    <div><h1 id="namaBisnes">Laman Garden</h1><p id="alamat">Parit Jawa, Muar</p></div>
+    <div class="nama"><h1 id="namaBisnes">Laman Garden</h1><p id="alamat">Parit Jawa, Muar</p></div>
+    <div class="bahasa" role="group" aria-label="Language"><button id="bEN" onclick="tukarBahasa('en')">EN</button><button id="bMS" onclick="tukarBahasa('ms')">BM</button></div>
   </header>
-
-  <div id="muat" class="tengah"><div class="pusing besar"></div>Loading available dates...<br><span class="ms">Memuatkan tarikh kosong...</span></div>
-  <div id="tutup" class="tersorok"></div>
-
-  <form id="borang" class="tersorok" onsubmit="return hantar(event)" novalidate>
-    <section class="hero">
-      <h2>Book your date<br><span style="font-weight:600;opacity:.85;font-size:17px">Tempah tarikh anda</span></h2>
-      <p>Choose a date, see the price, send a request. We will confirm on WhatsApp.<br><i style="opacity:.85">Pilih tarikh, lihat harga, hantar permohonan. Kami sahkan melalui WhatsApp.</i></p>
-      <div class="langkah" aria-hidden="true"><span id="l1" class="on"></span><span id="l2"></span><span id="l3"></span></div>
-    </section>
-
-    <section class="seksyen">
-      <h3><span class="no">1</span><span>What would you like? <span class="ms">/ Pilih jenis</span></span></h3>
-      <div class="jenis" id="pilihJenis"></div>
-    </section>
-
-    <section class="seksyen">
-      <h3><span class="no">2</span><span>Choose your dates <span class="ms">/ Pilih tarikh</span></span></h3>
-      <div class="kad">
-        <div class="nav-bulan">
-          <button type="button" class="btn-nav" id="btnSebelum" onclick="tukarBulan(-1)" aria-label="Previous month"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <b id="tajukBulan"></b>
-          <button type="button" class="btn-nav" id="btnSelepas" onclick="tukarBulan(1)" aria-label="Next month"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-        </div>
-        <div class="minggu"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
-        <div class="grid" id="grid"></div>
-        <div class="petunjuk">
-          <span><i style="background:var(--kad);border:1.5px solid var(--garis)"></i>Available / Kosong</span>
-          <span><i style="background:repeating-linear-gradient(135deg,#E3E6E2 0 3px,#FAFAF9 3px 6px)"></i>Booked / Penuh</span>
-          <span><i style="background:var(--daun)"></i>Your dates / Pilihan anda</span>
-        </div>
-        <div class="arahan" id="arahan" aria-live="polite"></div>
-      </div>
-      <div class="kad tersorok" id="harga" style="margin-top:12px"></div>
-    </section>
-
-    <section class="seksyen" id="seksyenButiran">
-      <h3><span class="no">3</span><span>Your details <span class="ms">/ Maklumat anda</span></span></h3>
-      <div class="kad">
-        <div class="medan"><label for="nama">Full name <span class="ms">/ Nama penuh</span></label><input id="nama" name="nama" autocomplete="name" maxlength="80" placeholder="e.g. Siti Aminah binti Ali"></div>
-        <div class="medan"><label for="telefon">WhatsApp number <span class="ms">/ No. WhatsApp</span></label><input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="0123456789"></div>
-        <div class="dua">
-          <div class="medan"><label for="pax">Guests <span class="ms">/ Tetamu</span></label><input id="pax" name="pax" inputmode="numeric" maxlength="20" placeholder="e.g. 200"></div>
-          <div class="medan"><label for="email">Email <span class="ms">(optional)</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></div>
-        </div>
-        <div class="medan"><label for="catatan">Event / notes <span class="ms">/ Majlis / catatan</span></label><textarea id="catatan" name="catatan" maxlength="1000" placeholder="e.g. Wedding reception, need 30 tables / Majlis kahwin, perlu 30 meja"></textarea></div>
-        <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
-        <div class="medan">
-          <label>Paid the deposit already? <span class="ms">/ Sudah bayar deposit?</span></label>
-          <label class="muat-naik" for="bukti" style="font-weight:inherit;color:inherit;margin:0">
-            <span class="ikon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-            <span><b id="namaBukti">Upload transfer receipt (optional)</b><small>Muat naik resit pindahan (pilihan). You can also send it later on WhatsApp.</small></span>
-          </label>
-          <input id="bukti" type="file" accept="image/*" class="tersorok" onchange="pilihBukti(this)">
-          <div class="bank tersorok" id="bank"></div>
-        </div>
-        <div class="nota" id="polisi"></div>
-      </div>
-      <div class="ralat tersorok" id="ralat" role="alert"></div>
-    </section>
-  </form>
-
-  <div id="siap" class="tersorok"></div>
+  <main id="isi"><div class="tengah"><div class="pusing besar"></div></div></main>
 </div>
-
-<div class="kaki tersorok" id="kaki">
-  <div class="kaki-dalam">
-    <div class="ringkas" id="kakiRingkas"><b>Choose dates</b>Pilih tarikh</div>
-    <button class="btn btn-utama" id="btnHantar" onclick="document.getElementById('borang').requestSubmit()" disabled>Send request</button>
-  </div>
-</div>
+<div class="kaki tersorok" id="kaki"><div class="kaki-dalam" id="kakiDalam"></div></div>
+<div class="toast" id="toast" role="status"></div>
+<input id="failBukti" type="file" accept="image/*" class="tersorok" onchange="hantarBukti(this)">
 
 <script>
   // ====== CHANGE THIS IF THE APPS SCRIPT /exec LINK CHANGES ======
   const APP_URL = 'https://script.google.com/macros/s/AKfycbwYCvm7VBoP-N4tyLbrK8W8zpCNYSE9OtYWiyOS4yvFfDBrPxwOIs2h2pYZknx_CvYQ/exec';
   // ================================================================
 
-  const BULAN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const HARI3 = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const T = {
+    en: {
+      memuat: 'Loading your booking page...', tiadaKod: 'This page needs your personal booking link',
+      tiadaKodSub: 'Ask us on WhatsApp and we will send you a link to choose your date.', waKami: 'WhatsApp us',
+      salah: 'This link is not valid', luput: 'This booking link has expired', batal: 'This booking link was cancelled',
+      mintaBaru: 'Please ask us for a new link.', cubaLagi: 'Try again',
+      langkah: (a, b) => 'Step ' + a + ' of ' + b,
+      tJenis: 'What would you like to book?', sJenis: 'Tap one to continue.',
+      tBorang: 'Book your date', sBorang: 'Choose what and when, check the price, then send. We will confirm with you on WhatsApp.', disediakan: 'Prepared for you',
+      ringkasHarga: 'Price', hantarPendek: 'Send request', pilihJenis: 'Choose a type', sTarikhUmum: 'Tap the date you want. For more days, tap the last day too.',
+      dewan: 'Dewan', dewanSub: 'Hall for your event, homestay included', homestay: 'Homestay', homestaySub: 'Stay only',
+      perHari: 'day', perMalam: 'night', hargaKhas: 'Your special price',
+      tTarikh: 'Choose your dates', sTarikhDewan: 'Tap your event date. For more than one day, tap the last day too.',
+      sTarikhHome: 'Tap your check-in date, then your check-out date.', pilihKeluar: d => 'Check-in ' + d + '. Now tap your check-out date.',
+      kosong: 'Available', penuh: 'Booked', pilihan: 'Your dates', ubahTarikh: 'Tap another date to change.',
+      tButiran: 'Your details', sButiran: 'So we can confirm your booking on WhatsApp.',
+      nama: 'Full name', telefon: 'WhatsApp number', tetamu: 'Number of guests', emel: 'Email (optional)', catatan: 'Event / notes (optional)',
+      phCatatan: 'e.g. wedding reception, need 30 tables',
+      tSemak: 'Check and send', sSemak: 'Nothing is charged yet. We will confirm on WhatsApp.',
+      jenis: 'Type', tarikh: 'Dates', tempoh: 'Duration', sewa: 'Rental', deposit: 'Booking deposit', depositSub: 'Paid after we accept, to confirm',
+      baki: 'Balance', bakiSub: 'Before check-in', sd: 'Security deposit', sdSub: 'Refunded after check-out', jumlah: 'Total',
+      apaSeterus: 'What happens next', s1: 'We check your request and reply on WhatsApp.', s2: 'Pay the booking deposit to confirm your dates.', s3: 'Use this same link to track, pay and get receipts.',
+      seterusnya: 'Next', hantar: 'Send booking request', menghantar: 'Sending', pilihTarikh: 'Choose dates',
+      ePilihJenis: 'Please choose Dewan or Homestay.', ePilihTarikh: 'Please choose your dates.', eNama: 'Please enter your full name.', eTel: 'Please enter a valid WhatsApp number.',
+      unit: (j, n) => n + ' ' + (j === 'Dewan' ? 'day' : 'night') + (n === 1 ? '' : 's'),
+      hai: n => 'Hi ' + n, rujukan: 'Ref.',
+      stBaru: ['We received your request', 'We will check and reply on WhatsApp soon. Your dates are not held until we accept.'],
+      stTolak: ['Sorry, we could not accept this request', 'Please WhatsApp us if you would like other dates.'],
+      stHold: d => ['Accepted! Pay the deposit to confirm', 'Your dates are held until ' + d + '.'],
+      stHoldBukti: ['Receipt received, we are checking it', 'We will confirm your booking soon.'],
+      stSahBaki: b => ['Your booking is confirmed', 'Please pay the balance of ' + b + ' before check-in.'],
+      stSah: d => ['All set! See you on ' + d, 'Your booking is confirmed and fully paid.'],
+      stSelesai: ['Thank you for staying with us', 'We hope to see you again.'],
+      stBatal: ['This booking was cancelled', ''], stLuput: ['The hold has expired', 'No deposit was received in time. WhatsApp us if you still want these dates.'],
+      gm: ['Request sent', 'Accepted by us', 'Deposit paid, booking confirmed', 'Fully paid', 'Check-in'],
+      tempahan: 'Your booking', bayaran: 'Payment', dibayar: 'Paid', bayarSekarang: 'Pay now', bayarKe: 'Transfer to',
+      salin: 'Copy', disalin: 'Copied', muatNaik: 'Upload your transfer receipt', muatNaikSub: 'A photo or screenshot is fine.',
+      memuatNaik: 'Uploading...', buktiTerima: 'Receipt received. We will check and confirm soon.', lunas: 'Fully paid. Thank you!',
+      sdDipegang: 'Security deposit held', sdPulang: 'Security deposit returned',
+      dokumen: 'Your documents', invois: 'Invoice', invoisSub: 'Price and amount to pay', sah: 'Booking confirmation', sahSub: 'Proof your dates are confirmed',
+      resit: 'Receipt', notis: 'Cancellation notice', buka: 'Open', menyedia: 'Preparing PDF...', dokSelepas: 'Documents appear here after we accept your booking.',
+      soalan: 'Questions?', segar: 'Refresh', polisi: 'Policies', bayaranP: 'Payment', pembatalan: 'Cancellation'
+    },
+    ms: {
+      memuat: 'Memuatkan halaman tempahan...', tiadaKod: 'Halaman ini perlukan link tempahan peribadi anda',
+      tiadaKodSub: 'Hubungi kami di WhatsApp dan kami akan hantar link untuk pilih tarikh.', waKami: 'WhatsApp kami',
+      salah: 'Link ini tidak sah', luput: 'Link tempahan ini telah tamat tempoh', batal: 'Link tempahan ini telah dibatalkan',
+      mintaBaru: 'Sila minta link baru daripada kami.', cubaLagi: 'Cuba lagi',
+      langkah: (a, b) => 'Langkah ' + a + ' daripada ' + b,
+      tJenis: 'Apa yang anda ingin tempah?', sJenis: 'Tekan satu untuk teruskan.',
+      tBorang: 'Tempah tarikh anda', sBorang: 'Pilih jenis dan tarikh, semak harga, kemudian hantar. Kami akan sahkan melalui WhatsApp.', disediakan: 'Disediakan untuk anda',
+      ringkasHarga: 'Harga', hantarPendek: 'Hantar', pilihJenis: 'Pilih jenis', sTarikhUmum: 'Tekan tarikh yang anda mahu. Untuk lebih sehari, tekan hari terakhir juga.',
+      dewan: 'Dewan', dewanSub: 'Dewan untuk majlis, termasuk homestay', homestay: 'Homestay', homestaySub: 'Penginapan sahaja',
+      perHari: 'hari', perMalam: 'malam', hargaKhas: 'Harga khas untuk anda',
+      tTarikh: 'Pilih tarikh', sTarikhDewan: 'Tekan tarikh majlis. Untuk lebih sehari, tekan hari terakhir juga.',
+      sTarikhHome: 'Tekan tarikh masuk, kemudian tarikh keluar.', pilihKeluar: d => 'Masuk ' + d + '. Sekarang tekan tarikh keluar.',
+      kosong: 'Kosong', penuh: 'Penuh', pilihan: 'Pilihan anda', ubahTarikh: 'Tekan tarikh lain untuk tukar.',
+      tButiran: 'Maklumat anda', sButiran: 'Supaya kami boleh sahkan tempahan melalui WhatsApp.',
+      nama: 'Nama penuh', telefon: 'No. WhatsApp', tetamu: 'Bilangan tetamu', emel: 'E-mel (pilihan)', catatan: 'Majlis / catatan (pilihan)',
+      phCatatan: 'cth. majlis kahwin, perlu 30 meja',
+      tSemak: 'Semak dan hantar', sSemak: 'Tiada bayaran lagi. Kami akan sahkan melalui WhatsApp.',
+      jenis: 'Jenis', tarikh: 'Tarikh', tempoh: 'Tempoh', sewa: 'Sewa', deposit: 'Deposit tempahan', depositSub: 'Dibayar selepas kami terima, untuk sahkan',
+      baki: 'Baki', bakiSub: 'Sebelum masuk', sd: 'Deposit keselamatan', sdSub: 'Dipulangkan selepas keluar', jumlah: 'Jumlah',
+      apaSeterus: 'Apa seterusnya', s1: 'Kami semak permohonan dan balas melalui WhatsApp.', s2: 'Bayar deposit tempahan untuk sahkan tarikh.', s3: 'Guna link yang sama untuk semak status, bayar dan dapatkan resit.',
+      seterusnya: 'Seterusnya', hantar: 'Hantar permohonan', menghantar: 'Menghantar', pilihTarikh: 'Pilih tarikh',
+      ePilihJenis: 'Sila pilih Dewan atau Homestay.', ePilihTarikh: 'Sila pilih tarikh.', eNama: 'Sila isi nama penuh.', eTel: 'Sila isi no. WhatsApp yang betul.',
+      unit: (j, n) => n + (j === 'Dewan' ? ' hari' : ' malam'),
+      hai: n => 'Hai ' + n, rujukan: 'Rujukan',
+      stBaru: ['Permohonan anda telah diterima', 'Kami akan semak dan balas melalui WhatsApp. Tarikh belum ditahan sehingga kami terima.'],
+      stTolak: ['Maaf, permohonan ini tidak dapat diterima', 'Sila WhatsApp kami jika ingin tarikh lain.'],
+      stHold: d => ['Diterima! Bayar deposit untuk sahkan', 'Tarikh anda ditahan sehingga ' + d + '.'],
+      stHoldBukti: ['Resit diterima, sedang disemak', 'Kami akan sahkan tempahan anda tidak lama lagi.'],
+      stSahBaki: b => ['Tempahan anda telah disahkan', 'Sila bayar baki ' + b + ' sebelum tarikh masuk.'],
+      stSah: d => ['Semua beres! Jumpa pada ' + d, 'Tempahan anda disahkan dan telah dibayar penuh.'],
+      stSelesai: ['Terima kasih kerana menginap bersama kami', 'Semoga berjumpa lagi.'],
+      stBatal: ['Tempahan ini telah dibatalkan', ''], stLuput: ['Tempoh tahanan telah tamat', 'Deposit tidak diterima dalam masa. WhatsApp kami jika masih mahu tarikh ini.'],
+      gm: ['Permohonan dihantar', 'Diterima oleh kami', 'Deposit dibayar, tempahan disahkan', 'Dibayar penuh', 'Tarikh masuk'],
+      tempahan: 'Tempahan anda', bayaran: 'Bayaran', dibayar: 'Dibayar', bayarSekarang: 'Bayar sekarang', bayarKe: 'Pindahkan ke',
+      salin: 'Salin', disalin: 'Disalin', muatNaik: 'Muat naik resit pindahan', muatNaikSub: 'Gambar atau tangkapan skrin pun boleh.',
+      memuatNaik: 'Memuat naik...', buktiTerima: 'Resit diterima. Kami akan semak dan sahkan.', lunas: 'Dibayar penuh. Terima kasih!',
+      sdDipegang: 'Deposit keselamatan dipegang', sdPulang: 'Deposit keselamatan dipulangkan',
+      dokumen: 'Dokumen anda', invois: 'Invois', invoisSub: 'Harga dan jumlah perlu dibayar', sah: 'Pengesahan tempahan', sahSub: 'Bukti tarikh anda disahkan',
+      resit: 'Resit', notis: 'Notis pembatalan', buka: 'Buka', menyedia: 'Menyediakan PDF...', dokSelepas: 'Dokumen akan keluar di sini selepas kami terima tempahan anda.',
+      soalan: 'Ada soalan?', segar: 'Muat semula', polisi: 'Polisi', bayaranP: 'Bayaran', pembatalan: 'Pembatalan'
+    }
+  };
+  const BULAN = { en: ['January','February','March','April','May','June','July','August','September','October','November','December'], ms: ['Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'] };
+  const HARI3 = { en: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], ms: ['Ahd','Isn','Sel','Rab','Kha','Jum','Sab'] };
   const WARNA = { Dewan: '#4E9A34', Homestay: '#2F8BD3' };
   const IKON = {
-    Dewan: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>',
-    Homestay: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v10H3z"/><path d="M9 21v-6h6v6"/></svg>'
+    Dewan: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>',
+    Homestay: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v10H3z"/><path d="M9 21v-6h6v6"/></svg>',
+    balik: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
+    kanan: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>',
+    tanda: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
+    kamera: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+    wa: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>'
   };
-  const S = { info: null, jenis: 'Dewan', mula: '', tamat: '', bulan: null, sibuk: {}, bukti: null };
+  let BH = 'en';
+  try { BH = localStorage.getItem('lg_bahasa') === 'ms' ? 'ms' : 'en'; } catch (e) {}
+  const t = (k, ...a) => { const v = T[BH][k]; return typeof v === 'function' ? v(...a) : v; };
+  const KOD = (new URLSearchParams(location.search).get('k') || '').toUpperCase().trim();
+  const S = { data: null, langkah: 0, jenis: '', mula: '', tamat: '', bulan: null, sibuk: {}, f: { nama: '', telefon: '', pax: '', email: '', catatan: '' } };
   const $ = id => document.getElementById(id);
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
   const key = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
   const rm = n => 'RM' + Number(n || 0).toLocaleString('en-MY', { maximumFractionDigits: 2 });
-  const tHari = s => { const d = parse(s); return HARI3[d.getDay()] + ', ' + d.getDate() + ' ' + BULAN[d.getMonth()].slice(0, 3) + ' ' + d.getFullYear(); };
+  const tHari = s => { const d = parse(s); return HARI3[BH][d.getDay()] + ', ' + d.getDate() + ' ' + BULAN[BH][d.getMonth()].slice(0, 3) + ' ' + d.getFullYear(); };
+  const julat = (m, k) => m === k ? tHari(m) : tHari(m) + ' – ' + tHari(k);
+  const kiraUnit = (j, m, k) => { const b = Math.max(0, Math.round((parse(k) - parse(m)) / 86400000)); return j === 'Dewan' ? b + 1 : Math.max(b, 1); };
 
   function panggil(tindakan, data) {
     return fetch(APP_URL, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: 'awam', args: [tindakan, data] }) })
-      .catch(() => { throw new Error('No internet connection. Please try again. / Tiada sambungan internet.'); })
-      .then(r => { if (!r.ok) throw new Error('Server busy, please try again. / Server sibuk, cuba lagi.'); return r.json(); })
+      .catch(() => { throw new Error(BH === 'ms' ? 'Tiada sambungan internet. Cuba lagi.' : 'No internet connection. Please try again.'); })
+      .then(r => { if (!r.ok) throw new Error(BH === 'ms' ? 'Server sibuk, cuba lagi.' : 'Server busy, please try again.'); return r.json(); })
       .then(j => { if (!j.ok) throw new Error(j.error || 'Something went wrong.'); return j.data; });
   }
-
-  function tetapan(j) { return S.info.settings.find(s => s.jenis === j) || { harga: 0, deposit: 0, sd: 0, unit: j === 'Dewan' ? 'day' : 'night' }; }
-  function kiraUnit(j, mula, tamat) { const b = Math.max(0, Math.round((parse(tamat) - parse(mula)) / 86400000)); return j === 'Dewan' ? b + 1 : Math.max(b, 1); }
-  function teksUnit(j, n) { return n + ' ' + (j === 'Dewan' ? 'day' : 'night') + (n === 1 ? '' : 's') + ' / ' + n + (j === 'Dewan' ? ' hari' : ' malam'); }
-  function julatBebas(mula, tamat) { for (let d = parse(mula); d <= parse(tamat); d = addDays(d, 1)) if (S.sibuk[key(d)]) return key(d); return null; }
+  function toast(m) { const x = $('toast'); x.textContent = m; x.style.display = 'block'; clearTimeout(x._t); x._t = setTimeout(() => { x.style.display = 'none'; }, 2600); }
+  function kaki(html) { $('kakiDalam').innerHTML = html; $('kaki').classList.toggle('tersorok', !html); }
+  function tukarBahasa(b) { if (S.data && S.data.keadaan === 'borang') simpanMedan(); BH = b; try { localStorage.setItem('lg_bahasa', b); } catch (e) {} lukis(); }
 
   async function mula() {
-    try {
-      S.info = await panggil('info');
-      S.info.sibuk.forEach(k => { S.sibuk[k] = 1; });
-      $('namaBisnes').textContent = S.info.nama;
-      $('alamat').textContent = S.info.alamat || '';
-      document.title = 'Book ' + S.info.nama;
-      $('muat').classList.add('tersorok');
-      if (!S.info.buka) return tutup();
-      const hariIni = parse(S.info.hariIni);
-      S.bulan = new Date(hariIni.getFullYear(), hariIni.getMonth(), 1);
-      lukisJenis(); lukisKalendar(); kemaskini();
-      if (S.info.bank) { $('bank').innerHTML = '<b>Bank / Akaun:</b> ' + esc(S.info.bank); $('bank').classList.remove('tersorok'); }
-      $('polisi').innerHTML = [S.info.polisiBayaran ? '<b>Payment / Bayaran:</b> ' + esc(S.info.polisiBayaran) : '', S.info.polisiSD ? '<b>Security deposit:</b> ' + esc(S.info.polisiSD) : '', S.info.polisiRefund ? '<b>Cancellation / Pembatalan:</b> ' + esc(S.info.polisiRefund) : ''].filter(Boolean).join('<br>');
-      $('borang').classList.remove('tersorok'); $('kaki').classList.remove('tersorok');
-    } catch (e) {
-      $('muat').innerHTML = '<b style="color:var(--teks)">Could not load the calendar.</b><br>' + esc(e.message) + '<br><br><button class="btn btn-utama" style="margin:0 auto" onclick="location.reload()">Try again / Cuba lagi</button>';
+    if (!KOD) {
+      try { const r = await panggil('asas'); S.data = { keadaan: 'tiada', asas: r.asas }; } catch (e) { S.data = { keadaan: 'tiada', asas: {} }; }
+      return lukis();
     }
+    try { S.data = await panggil('link', { k: KOD }); }
+    catch (e) { S.data = { keadaan: 'salah', mesej: e.message, asas: {} }; }
+    if (S.data.keadaan === 'borang') sediaBorang();
+    lukis();
   }
-  function tutup() {
-    const t = S.info.telefon;
-    $('tutup').innerHTML = '<div class="kad" style="margin-top:12px;text-align:center"><h2 style="font-size:20px">Online booking is closed for now</h2><p class="ms" style="margin-top:4px">Tempahan online ditutup buat sementara waktu</p>' +
-      (t ? '<a class="btn btn-wa" style="margin-top:16px" href="https://wa.me/' + t + '?text=' + encodeURIComponent('Hi, I would like to ask about booking ' + S.info.nama + '.') + '">WhatsApp us / Hubungi kami</a>' : '') + '</div>';
-    $('tutup').classList.remove('tersorok');
+  function sediaBorang() {
+    const d = S.data;
+    d.sibuk.forEach(k => { S.sibuk[k] = 1; });
+    S.jenis = d.jenis || ''; S.mula = d.mula || ''; S.tamat = d.tamat || '';
+    S.f.nama = S.f.nama || d.nama || ''; S.f.telefon = S.f.telefon || d.telefon || '';
+    const awal = parse(S.mula || d.hariIni);
+    S.bulan = new Date(awal.getFullYear(), awal.getMonth(), 1);
   }
 
-  function lukisJenis() {
-    $('pilihJenis').innerHTML = ['Dewan', 'Homestay'].map(j => {
-      const t = tetapan(j);
-      return '<label><input type="radio" name="jenis" value="' + j + '"' + (j === S.jenis ? ' checked' : '') + ' onchange="tukarJenis(this.value)">' +
-        '<span class="ikon" style="background:' + WARNA[j] + '">' + IKON[j] + '</span><b>' + (j === 'Dewan' ? 'Dewan' : 'Homestay') + '</b>' +
-        '<small>' + (j === 'Dewan' ? 'Hall + homestay<br><i>Dewan dan homestay</i>' : 'Stay only<br><i>Penginapan sahaja</i>') + '</small>' +
-        (t.harga ? '<span class="harga">' + rm(t.harga) + ' <i>/ ' + (j === 'Dewan' ? 'day · hari' : 'night · malam') + '</i></span>' : '') + '</label>';
-    }).join('');
+  function lukis() {
+    $('bEN').setAttribute('aria-pressed', BH === 'en'); $('bMS').setAttribute('aria-pressed', BH === 'ms');
+    document.documentElement.lang = BH === 'ms' ? 'ms' : 'en';
+    const d = S.data, a = (d && d.asas) || {};
+    if (a.nama) { $('namaBisnes').textContent = a.nama; $('alamat').textContent = a.alamat || ''; document.title = a.nama; }
+    if (!d) return;
+    if (d.keadaan === 'borang') return lukisBorang();
+    if (d.keadaan === 'status') return lukisStatus();
+    kaki('');
+    const wa = a.telefon ? '<a class="btn btn-wa" style="margin-top:18px" href="https://wa.me/' + a.telefon + '?text=' + encodeURIComponent((BH === 'ms' ? 'Hai, saya ingin membuat tempahan di ' : 'Hi, I would like to book ') + (a.nama || 'Laman Garden') + '.') + '">' + IKON.wa + t('waKami') + '</a>' : '';
+    const kotak = (tajuk, sub, butang) => $('isi').innerHTML = '<div class="kad tengah" style="padding:36px 20px"><h2>' + tajuk + '</h2><p>' + sub + '</p>' + (butang || '') + wa + '</div>';
+    if (d.keadaan === 'tiada') return kotak(t('tiadaKod'), t('tiadaKodSub'));
+    if (d.keadaan === 'luput') return kotak(t('luput'), t('mintaBaru'));
+    if (d.keadaan === 'batal') return kotak(t('batal'), t('mintaBaru'));
+    return kotak(t('salah'), esc(d.mesej || t('mintaBaru')), '<button class="btn btn-garis" style="margin-top:18px" onclick="location.reload()">' + t('cubaLagi') + '</button>');
   }
-  function tukarJenis(j) {
+
+  // ---------------- one-page booking form ----------------
+  function harga() {
+    const d = S.data, s = d.settings.find(x => x.jenis === S.jenis) || { harga: 0, deposit: 0, sd: 0 };
+    if (!S.jenis || !S.mula || !S.tamat) return null;
+    const n = kiraUnit(S.jenis, S.mula, S.tamat), sewa = d.hargaKhas != null ? d.hargaKhas : n * s.harga;
+    return { n: n, kadar: s.harga, sewa: sewa, deposit: Math.min(s.deposit, sewa || s.deposit), sd: s.sd, khas: d.hargaKhas != null };
+  }
+  function tajukSek(no, teks) { return '<h3 class="sek"><span class="no">' + no + '</span>' + teks + '</h3>'; }
+
+  function lukisBorang() {
+    const d = S.data, a = d.asas;
+    let no = 0, html = '<div class="hero" style="margin-top:8px"><small>' + (d.nama ? t('hai', esc(d.nama)) : a.nama) + '</small><h2>' + t('tBorang') + '</h2><p>' + t('sBorang') + '</p></div>';
+    if (d.jenis || d.mula) {
+      html += '<div class="kad"><h3>' + t('disediakan') + '</h3>' +
+        (d.jenis ? '<div class="rb"><span>' + t('jenis') + '</span><b>' + t(d.jenis === 'Dewan' ? 'dewan' : 'homestay') + '</b></div>' : '') +
+        (d.mula ? '<div class="rb"><span>' + t('tarikh') + '</span><b>' + julat(d.mula, d.tamat || d.mula) + '</b></div>' : '') + '</div>';
+    }
+    if (!d.jenis) {
+      html += '<section id="secJenis">' + tajukSek(++no, t('tJenis')) + '<div class="jenis-2">' + ['Dewan', 'Homestay'].map(j => {
+        const s = d.settings.find(x => x.jenis === j) || {};
+        return '<button id="j' + j + '" aria-pressed="' + (S.jenis === j) + '" onclick="pilihJenis(\'' + j + '\')"><span class="ikon" style="background:' + WARNA[j] + '">' + IKON[j] + '</span>' +
+          '<b>' + t(j === 'Dewan' ? 'dewan' : 'homestay') + '</b><small>' + t(j === 'Dewan' ? 'dewanSub' : 'homestaySub') + '</small>' +
+          (s.harga && d.hargaKhas == null ? '<span class="harga">' + rm(s.harga) + ' <i>/ ' + t(j === 'Dewan' ? 'perHari' : 'perMalam') + '</i></span>' : '') + '</button>';
+      }).join('') + '</div></section>';
+    }
+    if (!d.mula) {
+      html += '<section id="secTarikh">' + tajukSek(++no, t('tTarikh')) +
+        '<div class="kad" style="margin-top:0"><div class="nav-bulan"><button class="btn-nav" id="btnSebelum" onclick="tukarBulan(-1)" aria-label="Previous month"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+        '<b id="tajukBulan"></b><button class="btn-nav" id="btnSelepas" onclick="tukarBulan(1)" aria-label="Next month"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></div>' +
+        '<div class="minggu">' + HARI3[BH].map(x => '<div>' + x + '</div>').join('') + '</div><div class="grid" id="grid"></div>' +
+        '<div class="petunjuk"><span><i style="background:var(--kad);border:1.5px solid var(--garis)"></i>' + t('kosong') + '</span><span><i style="background:repeating-linear-gradient(135deg,#E3E6E2 0 3px,#FAFAF9 3px 6px)"></i>' + t('penuh') + '</span><span><i style="background:var(--daun)"></i>' + t('pilihan') + '</span></div>' +
+        '<div class="arahan" id="arahan" aria-live="polite" style="box-shadow:none;background:var(--bg)"></div></div></section>';
+    }
+    html += '<div id="secHarga"></div>';
+    const f = S.f, m = (id, label, attrs, nilai) => '<div class="medan"><label for="' + id + '">' + label + '</label><input id="' + id + '" ' + attrs + ' value="' + esc(nilai) + '"></div>';
+    html += '<section id="secButiran">' + tajukSek(++no, t('tButiran')) + '<div class="kad" style="margin-top:0">' +
+      m('fNama', t('nama'), 'autocomplete="name" maxlength="80"', f.nama) +
+      m('fTel', t('telefon'), 'type="tel" inputmode="tel" autocomplete="tel" placeholder="0123456789"', f.telefon) +
+      '<div class="dua">' + m('fPax', t('tetamu'), 'inputmode="numeric" maxlength="20" placeholder="200"', f.pax) + m('fEmel', t('emel'), 'type="email" autocomplete="email"', f.email) + '</div>' +
+      '<div class="medan"><label for="fCatatan">' + t('catatan') + '</label><textarea id="fCatatan" maxlength="1000" placeholder="' + esc(t('phCatatan')) + '">' + esc(f.catatan) + '</textarea></div>' +
+      '<div class="hp" aria-hidden="true"><label>Website <input id="fWeb" tabindex="-1" autocomplete="off"></label></div></div></section>';
+    const polisi = [a.polisiBayaran ? '<b>' + t('bayaranP') + ':</b> ' + esc(a.polisiBayaran) : '', a.polisiSD ? '<b>' + t('sd') + ':</b> ' + esc(a.polisiSD) : '', a.polisiRefund ? '<b>' + t('pembatalan') + ':</b> ' + esc(a.polisiRefund) : ''].filter(Boolean).join('<br>');
+    html += '<div class="kad"><h3>' + t('apaSeterus') + '</h3><div class="seterus"><div><span class="no">1</span><span>' + t('s1') + '</span></div><div><span class="no">2</span><span>' + t('s2') + '</span></div><div><span class="no">3</span><span>' + t('s3') + '</span></div></div>' +
+      (polisi ? '<details class="nota"><summary style="cursor:pointer;font-weight:700">' + t('polisi') + '</summary><div style="margin-top:6px">' + polisi + '</div></details>' : '') + '</div>' +
+      '<div class="ralat tersorok" id="ralat" role="alert"></div>';
+    $('isi').innerHTML = html;
+    if (!d.mula) lukisKalendar();
+    kemaskini();
+  }
+
+  // update price, footer and buttons without redrawing the form (keeps what the guest typed)
+  function kemaskini() {
+    if (!S.data || S.data.keadaan !== 'borang') return;
+    ['Dewan', 'Homestay'].forEach(j => { const b = $('j' + j); if (b) b.setAttribute('aria-pressed', S.jenis === j); });
+    const h = harga(), sec = $('secHarga');
+    if (h && (h.sewa || h.khas)) {
+      sec.innerHTML = '<div class="kad"><h3>' + t('ringkasHarga') + '</h3>' +
+        '<div class="rb"><span>' + t('sewa') + '<small>' + (h.khas ? t('hargaKhas') : t('unit', S.jenis, h.n) + ' × ' + rm(h.kadar)) + '</small></span><b>' + rm(h.sewa) + '</b></div>' +
+        '<div class="rb"><span>' + t('deposit') + '<small>' + t('depositSub') + '</small></span><b>' + rm(h.deposit) + '</b></div>' +
+        '<div class="rb"><span>' + t('baki') + '<small>' + t('bakiSub') + '</small></span><b>' + rm(Math.max(h.sewa - h.deposit, 0)) + '</b></div>' +
+        (h.sd ? '<div class="rb"><span>' + t('sd') + '<small>' + t('sdSub') + '</small></span><b>' + rm(h.sd) + '</b></div>' : '') +
+        '<div class="jumlah"><span>' + t('jumlah') + '</span><b>' + rm(h.sewa + h.sd) + '</b></div></div>';
+    } else sec.innerHTML = '';
+    const ringkas = h && (h.sewa || h.khas)
+      ? '<div class="ringkas"><b>' + rm(h.sewa + h.sd) + '</b>' + julatPendek() + ' · ' + t('unit', S.jenis, h.n) + '</div>'
+      : '<div class="ringkas"><b>' + (!S.jenis ? t('pilihJenis') : !S.tamat ? t('pilihTarikh') : julatPendek()) + '</b>' + (S.jenis ? t(S.jenis === 'Dewan' ? 'dewan' : 'homestay') : '') + '</div>';
+    kaki(ringkas + '<button class="btn btn-utama" id="btnHantar" onclick="hantar()">' + t('hantarPendek') + '</button>');
+  }
+  function julatPendek() {
+    const p = s => { const d = parse(s); return d.getDate() + ' ' + BULAN[BH][d.getMonth()].slice(0, 3); };
+    return S.mula === S.tamat ? p(S.mula) : p(S.mula) + ' – ' + p(S.tamat);
+  }
+
+  function pilihJenis(j) {
+    if (S.jenis !== j && !S.data.mula) {
+      if (j === 'Homestay' && S.mula && S.tamat === S.mula) S.tamat = '';
+      if (S.mula && S.tamat && !bebas(S.mula, S.tamat)) { S.mula = ''; S.tamat = ''; }
+    }
     S.jenis = j;
-    if (S.mula && j === 'Homestay' && S.tamat === S.mula) S.tamat = '';
-    lukisKalendar(); kemaskini();
+    if ($('grid')) lukisKalendar();
+    kemaskini();
+    $('ralat').classList.add('tersorok');
+    if (!S.data.mula && !S.tamat) $('secTarikh').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  function tukarBulan(n) { S.bulan = new Date(S.bulan.getFullYear(), S.bulan.getMonth() + n, 1); lukisKalendar(); }
 
+  function tukarBulan(n) { S.bulan = new Date(S.bulan.getFullYear(), S.bulan.getMonth() + n, 1); lukisKalendar(); }
   function lukisKalendar() {
-    const y = S.bulan.getFullYear(), m = S.bulan.getMonth(), hariIni = S.info.hariIni;
-    const awal = parse(hariIni), had = addDays(awal, 540);
-    $('tajukBulan').textContent = BULAN[m] + ' ' + y;
+    const y = S.bulan.getFullYear(), m = S.bulan.getMonth(), k0 = S.data.hariIni, awal = parse(k0);
+    $('tajukBulan').textContent = BULAN[BH][m] + ' ' + y;
     $('btnSebelum').disabled = y === awal.getFullYear() && m === awal.getMonth();
-    $('btnSelepas').disabled = new Date(y, m + 1, 1) > had;
+    $('btnSelepas').disabled = new Date(y, m + 1, 1) > addDays(awal, 540);
     let html = '';
     for (let i = 0; i < new Date(y, m, 1).getDay(); i++) html += '<div></div>';
+    const akhir = S.tamat || S.mula;
     for (let d = 1; d <= new Date(y, m + 1, 0).getDate(); d++) {
-      const k = key(new Date(y, m, d)), kelas = ['hari'];
-      const lepas = k < hariIni, sibuk = S.sibuk[k];
+      const k = key(new Date(y, m, d)), kelas = ['hari'], lepas = k < k0, sibuk = S.sibuk[k];
       if (lepas) kelas.push('lepas'); else if (sibuk) kelas.push('sibuk');
-      if (k === hariIni) kelas.push('kini');
-      const tamat = S.tamat || S.mula;
-      if (S.mula && k >= S.mula && k <= tamat) kelas.push(k === S.mula ? 'mula' : '', k === tamat ? 'tamat' : '', k !== S.mula && k !== tamat ? 'dalam' : '');
-      const label = tHari(k) + (lepas ? ', past' : sibuk ? ', booked' : ', available');
-      html += '<button type="button" class="' + kelas.filter(Boolean).join(' ') + '"' + (lepas || sibuk ? ' disabled' : '') + ' onclick="pilihHari(\'' + k + '\')" aria-label="' + label + '">' + d + '</button>';
+      if (k === k0) kelas.push('kini');
+      if (S.mula && k >= S.mula && k <= akhir) kelas.push(k === S.mula ? 'mula' : '', k === akhir ? 'tamat' : '', k !== S.mula && k !== akhir ? 'dalam' : '');
+      html += '<button class="' + kelas.filter(Boolean).join(' ') + '"' + (lepas || sibuk ? ' disabled' : '') + ' onclick="pilihHari(\'' + k + '\')" aria-label="' + tHari(k) + '">' + d + '</button>';
     }
     $('grid').innerHTML = html;
+    const ar = $('arahan'), home = S.jenis === 'Homestay';
+    if (!S.mula) { ar.className = 'arahan'; ar.textContent = S.jenis ? t(home ? 'sTarikhHome' : 'sTarikhDewan') : t('sTarikhUmum'); }
+    else if (!S.tamat) { ar.className = 'arahan'; ar.textContent = t('pilihKeluar', tHari(S.mula)); }
+    else { ar.className = 'arahan ok'; ar.innerHTML = '<b>' + julat(S.mula, S.tamat) + '</b>' + (S.jenis ? ' · ' + t('unit', S.jenis, kiraUnit(S.jenis, S.mula, S.tamat)) : '') + '<br>' + t('kosong') + '. ' + t('ubahTarikh'); }
+    ar.style.background = ar.className === 'arahan ok' ? '' : 'var(--bg)';
   }
-
+  function bebas(m, k) { for (let d = parse(m); d <= parse(k); d = addDays(d, 1)) if (S.sibuk[key(d)]) return false; return true; }
   function pilihHari(k) {
-    $('ralat').classList.add('tersorok');
-    const homestay = S.jenis === 'Homestay';
-    if (!S.mula || (S.tamat && S.tamat !== S.mula) || k < S.mula || (homestay && S.tamat)) {
-      S.mula = k; S.tamat = homestay ? '' : k;
-    } else {
-      if (homestay && k === S.mula) { S.mula = ''; S.tamat = ''; }
-      else {
-        const kena = julatBebas(S.mula, k);
-        if (kena) { S.mula = k; S.tamat = homestay ? '' : k; }
-        else S.tamat = k;
-      }
-    }
+    const home = S.jenis === 'Homestay';
+    if (!S.mula || (S.tamat && S.tamat !== S.mula) || k < S.mula || (home && S.tamat)) { S.mula = k; S.tamat = home ? '' : k; }
+    else if (home && k === S.mula) { S.mula = ''; S.tamat = ''; }
+    else if (bebas(S.mula, k)) S.tamat = k;
+    else { S.mula = k; S.tamat = home ? '' : k; }
     lukisKalendar(); kemaskini();
+    $('ralat').classList.add('tersorok');
   }
 
-  function kemaskini() {
-    const j = S.jenis, t = tetapan(j), ar = $('arahan');
-    let siap = false;
-    if (!S.mula) { ar.className = 'arahan'; ar.innerHTML = j === 'Dewan' ? 'Tap your event date. For more days, tap the last day too.<br><i>Tekan tarikh majlis. Untuk lebih sehari, tekan hari terakhir juga.</i>' : 'Tap your check-in date, then your check-out date.<br><i>Tekan tarikh masuk, kemudian tarikh keluar.</i>'; }
-    else if (!S.tamat) { ar.className = 'arahan'; ar.innerHTML = 'Check-in ' + tHari(S.mula) + '. Now tap your check-out date.<br><i>Sekarang tekan tarikh keluar.</i>'; }
-    else {
-      siap = true;
-      ar.className = 'arahan ok';
-      ar.innerHTML = '<b>' + tHari(S.mula) + (S.tamat !== S.mula ? ' – ' + tHari(S.tamat) : '') + '</b> · ' + teksUnit(j, kiraUnit(j, S.mula, S.tamat)) + '<br>Available / Kosong' + (j === 'Dewan' ? '. Tap another date to change. / Tekan tarikh lain untuk tukar.' : '');
-    }
-    const box = $('harga');
-    if (siap && t.harga) {
-      const n = kiraUnit(j, S.mula, S.tamat), sewa = n * t.harga, dep = Math.min(t.deposit, sewa);
-      box.innerHTML = '<div class="rb"><span>Rental <span class="ms">/ Sewa</span><small>' + teksUnit(j, n) + ' × ' + rm(t.harga) + '</small></span><b>' + rm(sewa) + '</b></div>' +
-        '<div class="rb"><span>Booking deposit <span class="ms">/ Deposit tempahan</span><small>To confirm your booking / Untuk sahkan tempahan</small></span><b>' + rm(dep) + '</b></div>' +
-        '<div class="rb"><span>Balance <span class="ms">/ Baki</span><small>Before check-in / Sebelum masuk</small></span><b>' + rm(Math.max(sewa - dep, 0)) + '</b></div>' +
-        (t.sd ? '<div class="rb"><span>Security deposit <span class="ms">/ Deposit keselamatan</span><small>Refundable after check-out / Dipulangkan selepas keluar</small></span><b>' + rm(t.sd) + '</b></div>' : '') +
-        '<div class="jumlah"><span>Total <span class="ms">/ Jumlah</span></span><b>' + rm(sewa + t.sd) + '</b></div>';
-      box.classList.remove('tersorok');
-      $('kakiRingkas').innerHTML = '<b>' + rm(sewa + t.sd) + '</b>' + teksUnit(j, n).split(' / ')[0] + ' · deposit ' + rm(dep);
-    } else {
-      box.classList.add('tersorok');
-      $('kakiRingkas').innerHTML = siap ? '<b>Price on request</b>Harga akan dimaklumkan' : '<b>Choose dates</b>Pilih tarikh';
-    }
-    $('btnHantar').disabled = !siap;
-    $('l2').classList.toggle('on', siap);
-    $('l3').classList.toggle('on', siap && $('nama').value.trim().length > 2 && $('telefon').value.replace(/\D/g, '').length >= 10);
+  function simpanMedan() {
+    if (!$('fNama')) return;
+    S.f = { nama: $('fNama').value, telefon: $('fTel').value, pax: $('fPax').value, email: $('fEmel').value, catatan: $('fCatatan').value, web: $('fWeb').value };
   }
-  document.addEventListener('input', e => { if (e.target.id === 'nama' || e.target.id === 'telefon') kemaskini(); });
+  function salah(m, sasaran) {
+    const e = $('ralat'); e.textContent = m; e.classList.remove('tersorok');
+    const s = sasaran && $(sasaran);
+    (s || e).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (s && s.focus && s.tagName === 'INPUT') setTimeout(() => s.focus(), 350);
+    toast(m);
+  }
+  async function hantar() {
+    simpanMedan();
+    if (!S.jenis) return salah(t('ePilihJenis'), 'secJenis');
+    if (!S.mula || !S.tamat) return salah(t('ePilihTarikh'), 'secTarikh');
+    if (S.f.nama.trim().length < 3) return salah(t('eNama'), 'fNama');
+    if (S.f.telefon.replace(/\D/g, '').length < 10) return salah(t('eTel'), 'fTel');
+    const btn = $('btnHantar');
+    btn.disabled = true; btn.innerHTML = '<span class="pusing"></span>' + t('menghantar');
+    try {
+      S.data = await panggil('mohon', { k: KOD, jenis: S.jenis, tarikhMula: S.mula, tarikhTamat: S.tamat, nama: S.f.nama, telefon: S.f.telefon,
+        email: S.f.email, pax: S.f.pax, catatan: S.f.catatan, website: S.f.web || '' });
+      lukis(); window.scrollTo(0, 0);
+    } catch (e) {
+      btn.disabled = false; btn.textContent = t('hantarPendek');
+      if (/taken|diambil/i.test(e.message)) {
+        try { const baru = await panggil('link', { k: KOD }); S.sibuk = {}; baru.sibuk.forEach(k => { S.sibuk[k] = 1; }); if (!S.data.mula) { S.mula = ''; S.tamat = ''; } lukisKalendar(); kemaskini(); } catch (x) {}
+        return salah(e.message, 'secTarikh');
+      }
+      salah(e.message);
+    }
+  }
 
-  function pilihBukti(el) {
-    const f = el.files[0];
-    $('namaBukti').textContent = f ? f.name : 'Upload transfer receipt (optional)';
-    S.bukti = null;
+  // ---------------- guest booking page ----------------
+  function lukisStatus() {
+    const d = S.data, r = d.request, b = d.booking, a = d.asas;
+    const tarikh = b ? julat(b.mula, b.tamat) : julat(r.mula, r.tamat), jenis = (b || r).jenis;
+    const baki = b ? Math.max(b.harga - b.dibayar, 0) : 0, sdPerlu = b && !/Returned|Kept/.test(b.statusSD) ? Math.max(b.sd - b.sdDibayar, 0) : 0;
+    const depositPerlu = b && b.status === 'Hold' ? Math.max(b.deposit - b.dibayar, 0) : 0;
+    const tahan = b && b.holdSehingga ? tHari(b.holdSehingga.split(' ')[0]) + ', ' + b.holdSehingga.split(' ')[1] : '';
+    let st, nada = 'hijau';
+    if (r.status === 'Ditolak') { st = t('stTolak'); nada = 'merah'; if (r.sebabTolak) st = [st[0], r.sebabTolak + '. ' + st[1]]; }
+    else if (!b) { st = t('stBaru'); nada = 'biru'; }
+    else if (b.status === 'Batal') { st = [t('stBatal')[0], b.sebabBatal]; nada = 'merah'; }
+    else if (b.status === 'Luput') { st = t('stLuput'); nada = 'kelabu'; }
+    else if (b.status === 'Hold') { st = b.buktiMenunggu ? t('stHoldBukti') : t('stHold', tahan); nada = 'kuning'; }
+    else if (b.status === 'Selesai') st = t('stSelesai');
+    else if (baki > 0) st = t('stSahBaki', rm(baki));
+    else st = t('stSah', tHari(b.mula));
+
+    const langkahSiap = [true, !!b && !['Batal', 'Luput'].includes(b.status), !!b && ['Confirmed', 'Selesai'].includes(b.status), !!b && ['Confirmed', 'Selesai'].includes(b.status) && baki <= 0, !!b && b.status === 'Selesai'];
+    const kini = langkahSiap.indexOf(false);
+    const gm = r.status === 'Ditolak' || (b && ['Batal', 'Luput'].includes(b.status)) ? '' :
+      '<div class="kad"><div class="garis-masa">' + t('gm').map((x, i) => '<div class="' + (langkahSiap[i] ? 'siap' : i === kini ? 'kini' : 'belum') + '"><i>' + (langkahSiap[i] ? IKON.tanda : '') + '</i><span><b>' + x + '</b>' + (i === 4 && b ? '<small>' + tHari(b.mula) + '</small>' : '') + '</span></div>').join('') + '</div></div>';
+
+    let bayar = '';
+    if (b && !['Batal', 'Luput'].includes(b.status)) {
+      const perlu = b.status === 'Hold' ? depositPerlu : baki + sdPerlu;
+      bayar = '<div class="kad"><h3>' + t('bayaran') + '</h3>' +
+        '<div class="rb"><span>' + t('sewa') + '</span><b>' + rm(b.harga) + '</b></div>' +
+        '<div class="rb"><span>' + t('dibayar') + '</span><b>' + rm(b.dibayar) + '</b></div>' +
+        '<div class="rb besar"><span>' + t('baki') + '<small>' + t('bakiSub') + '</small></span><b>' + rm(baki) + '</b></div>' +
+        (b.sd ? '<div class="rb"><span>' + t('sd') + '<small>' + t('sdSub') + '</small></span><b>' + (/Returned|Kept/.test(b.statusSD) ? t('sdPulang') + ' ' + rm(b.sdDipulangkan) : rm(b.sd) + (b.sdDibayar >= b.sd ? ' ✓' : '')) + '</b></div>' : '') +
+        (perlu > 0 && b.status !== 'Selesai' ? '<div class="bayar-kotak"><small style="font-weight:700;color:var(--kuning)">' + t('bayarSekarang') + (b.status === 'Hold' ? ' · ' + t('deposit') : '') + '</small><div class="amaun">' + rm(perlu) + '</div>' +
+            (b.status !== 'Hold' && baki > 0 && sdPerlu > 0 ? '<small style="color:var(--kuning)">' + t('baki') + ' ' + rm(baki) + ' + ' + t('sd').toLowerCase() + ' ' + rm(sdPerlu) + '</small>' : '') +
+            (a.bank ? '<small style="color:var(--kuning)">' + t('bayarKe') + '</small><div class="bank"><span>' + esc(a.bank) + '</span><button class="btn-kecil" onclick="salinBank()">' + t('salin') + '</button></div>' : '') + '</div>' +
+          (b.buktiMenunggu ? '<div class="lencana">' + IKON.tanda + '<span>' + t('buktiTerima') + '</span></div>' : '') +
+          '<button class="muat-naik" id="btnBukti" onclick="$(\'failBukti\').click()"><span class="ikon">' + IKON.kamera + '</span><span><b>' + t('muatNaik') + '</b><small>' + t('muatNaikSub') + '</small></span></button>'
+        : baki <= 0 ? '<div class="lencana">' + IKON.tanda + '<span>' + t('lunas') + '</span></div>' : '') + '</div>';
+    } else if (!b && r.status === 'Baru') {
+      bayar = '<div class="kad"><div class="rb"><span>' + t('sewa') + '</span><b>' + rm(r.anggaran) + '</b></div></div>';
+    }
+
+    let dok = '';
+    if (b) {
+      const baris = (kod, tajuk, sub, jenis, id) => '<button class="dok" onclick="bukaDok(this, \'' + jenis + '\', \'' + (id || '') + '\')"><span class="pdf">' + kod + '</span><span class="isi"><b>' + tajuk + '</b><small>' + sub + '</small></span><span class="btn-kecil">' + t('buka') + '</span></button>';
+      dok = '<div class="kad"><h3>' + t('dokumen') + '</h3>' +
+        (b.status === 'Batal' ? baris('CN', t('notis'), esc(b.id), 'notice') :
+          (b.status !== 'Luput' ? baris('INV', t('invois'), t('invoisSub'), 'invoice') : '') +
+          (['Confirmed', 'Selesai'].includes(b.status) ? baris('BC', t('sah'), t('sahSub'), 'confirm') : '')) +
+        b.bayaran.map(p => baris(p.jenis.indexOf('SD Dipulangkan') >= 0 ? 'SR' : p.jenis.indexOf('Refund') >= 0 ? 'RF' : 'RS', t('resit') + ' ' + esc(p.no), tHari(p.tarikh) + ' · ' + rm(p.jumlah), 'receipt', p.id)).join('') + '</div>';
+    } else if (r.status === 'Baru') dok = '<div class="kad"><h3>' + t('dokumen') + '</h3><p class="sub" style="margin:0">' + t('dokSelepas') + '</p></div>';
+
+    $('isi').innerHTML = '<div class="hero ' + nada + '"><small>' + t('hai', esc(r.nama)) + ' · ' + t('rujukan') + ' ' + esc(b ? b.id : r.id) + '</small><h2>' + esc(st[0]) + '</h2>' + (st[1] ? '<p>' + esc(st[1]) + '</p>' : '') + '</div>' +
+      '<div class="kad"><h3>' + t('tempahan') + '</h3><div class="rb"><span>' + t('jenis') + '</span><b>' + t(jenis === 'Dewan' ? 'dewan' : 'homestay') + '</b></div>' +
+        '<div class="rb"><span>' + t('tarikh') + '</span><b>' + tarikh + '</b></div><div class="rb"><span>' + t('tempoh') + '</span><b>' + t('unit', jenis, kiraUnit(jenis, (b || r).mula, (b || r).tamat)) + '</b></div></div>' +
+      gm + bayar + dok +
+      '<button class="btn btn-garis" style="margin-top:14px" onclick="segar(this)">' + t('segar') + '</button>';
+    kaki(a.telefon ? '<div class="ringkas"><b>' + t('soalan') + '</b>' + esc(a.nama) + '</div><a class="btn btn-wa" style="width:auto" href="https://wa.me/' + a.telefon + '?text=' + encodeURIComponent((BH === 'ms' ? 'Hai, berkenaan tempahan ' : 'Hi, about booking ') + (b ? b.id : r.id) + '.') + '">' + IKON.wa + 'WhatsApp</a>' : '');
+  }
+  function salinBank() {
+    const no = String(S.data.asas.bank).replace(/[^\d]/g, '') || S.data.asas.bank;
+    (navigator.clipboard ? navigator.clipboard.writeText(no) : Promise.reject()).then(() => toast(t('disalin') + ': ' + no), () => toast(no));
+  }
+  async function segar(btn) {
+    btn.disabled = true; btn.innerHTML = '<span class="pusing gelap"></span>';
+    try { S.data = await panggil('link', { k: KOD }); } catch (e) { toast(e.message); }
+    lukis();
+  }
+  function hantarBukti(el) {
+    const f = el.files[0]; el.value = '';
     if (!f) return;
+    const btn = $('btnBukti'); btn.disabled = true; btn.querySelector('b').textContent = t('memuatNaik');
     const img = new Image(), url = URL.createObjectURL(f);
-    img.onload = () => {
+    img.onload = async () => {
       const sk = Math.min(1, 1400 / Math.max(img.width, img.height)), c = document.createElement('canvas');
       c.width = Math.round(img.width * sk); c.height = Math.round(img.height * sk);
       c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
       URL.revokeObjectURL(url);
-      S.bukti = { data: c.toDataURL('image/jpeg', 0.78).split(',')[1], mimeType: 'image/jpeg' };
+      try { S.data = await panggil('bukti', { k: KOD, bukti: { data: c.toDataURL('image/jpeg', 0.78).split(',')[1], mimeType: 'image/jpeg' } }); lukis(); toast(t('buktiTerima')); }
+      catch (e) { toast(e.message); btn.disabled = false; btn.querySelector('b').textContent = t('muatNaik'); }
     };
-    img.onerror = () => { $('namaBukti').textContent = 'This file is not a photo. Choose an image.'; };
+    img.onerror = () => { btn.disabled = false; btn.querySelector('b').textContent = t('muatNaik'); toast('Please choose a photo.'); };
     img.src = url;
   }
-
-  function salah(m) { $('ralat').textContent = m; $('ralat').classList.remove('tersorok'); $('ralat').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-
-  async function hantar(e) {
-    e.preventDefault();
-    const f = $('borang');
-    if (!S.mula || !S.tamat) return salah('Please choose your dates. / Sila pilih tarikh.'), false;
-    if (f.nama.value.trim().length < 3) { f.nama.focus(); return salah('Please enter your full name. / Sila isi nama penuh.'), false; }
-    if (f.telefon.value.replace(/\D/g, '').length < 10) { f.telefon.focus(); return salah('Please enter a valid WhatsApp number. / Sila isi no. WhatsApp yang betul.'), false; }
-    const btn = $('btnHantar');
-    btn.disabled = true; btn.innerHTML = '<span class="pusing"></span>Sending';
+  async function bukaDok(el, jenis, id) {
+    const label = el.querySelector('.btn-kecil'), asal = label.textContent;
+    const w = window.open('', '_blank');
+    label.textContent = t('menyedia'); el.disabled = true;
     try {
-      const r = await panggil('mohon', { jenis: S.jenis, tarikhMula: S.mula, tarikhTamat: S.tamat, nama: f.nama.value, telefon: f.telefon.value,
-        email: f.email.value, pax: f.pax.value, catatan: f.catatan.value, website: f.website.value, bukti: S.bukti });
-      siap(r);
-    } catch (err) {
-      salah(err.message);
-      btn.disabled = false; btn.textContent = 'Send request';
-      if (/taken|diambil/i.test(err.message)) { S.mula = ''; S.tamat = ''; try { const i = await panggil('info'); S.sibuk = {}; i.sibuk.forEach(k => { S.sibuk[k] = 1; }); } catch (x) {} lukisKalendar(); kemaskini(); }
-    }
-    return false;
+      const r = await panggil('dokumen', { k: KOD, jenis: jenis, id: id });
+      if (w) w.location = r.url; else location.href = r.url;
+    } catch (e) { if (w) w.close(); toast(e.message); }
+    label.textContent = asal; el.disabled = false;
   }
 
-  function siap(r) {
-    const t = S.info.telefon;
-    const mesej = 'Hi ' + S.info.nama + ', I just sent booking request ' + r.id + ' for ' + tHari(S.mula) + (S.tamat !== S.mula ? ' – ' + tHari(S.tamat) : '') + ' (' + S.jenis + '). Name: ' + $('nama').value.trim() + '.';
-    $('borang').classList.add('tersorok'); $('kaki').classList.add('tersorok');
-    $('siap').innerHTML = '<div class="berjaya"><div class="tanda"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
-      '<h2>Request sent!</h2><p class="ms">Permohonan dihantar!</p>' +
-      '<div class="no-rujukan">' + esc(r.id) + '</div>' +
-      '<p>We will check and confirm with you on WhatsApp soon. Your dates are not held until we confirm.<br><i>Kami akan semak dan sahkan melalui WhatsApp. Tarikh belum ditahan sehingga disahkan.</i></p></div>' +
-      '<div class="kad" style="margin-top:16px">' +
-        '<div class="rb"><span>Dates / Tarikh</span><b>' + tHari(S.mula) + (S.tamat !== S.mula ? ' – ' + tHari(S.tamat) : '') + '</b></div>' +
-        '<div class="rb"><span>Type / Jenis</span><b>' + S.jenis + '</b></div>' +
-        (r.sewa ? '<div class="rb"><span>Rental / Sewa</span><b>' + rm(r.sewa) + '</b></div><div class="rb"><span>Deposit to confirm / Deposit</span><b>' + rm(r.deposit) + '</b></div>' : '') +
-        (r.ulang ? '<div class="rb"><span>This request was already sent earlier.</span><b></b></div>' : '') +
-      '</div>' +
-      (t ? '<a class="btn btn-wa" style="margin-top:14px" href="https://wa.me/' + t + '?text=' + encodeURIComponent(mesej) + '">WhatsApp us now / Hubungi kami</a>' : '') +
-      '<button class="btn btn-garis" style="margin-top:10px" onclick="location.reload()">Make another request / Permohonan lain</button>';
-    $('siap').classList.remove('tersorok');
-    window.scrollTo(0, 0);
-  }
-
+  lukis();
   mula();
 </script>
 </body>
 </html>
-
